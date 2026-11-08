@@ -1,0 +1,24 @@
+services:
+  monitor-latam:
+    image: ghcr.io/SEU_USUARIO/monitor-latam:latest
+    container_name: monitor-latam
+    restart: unless-stopped
+    init: true
+    shm_size: "1gb"
+    environment:
+      TZ: America/Sao_Paulo
+      MONITOR_DATA_DIR: /app/data
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
+    volumes:
+      - monitor_latam_data:/app/data
+    security_opt:
+      - no-new-privileges:true
+    command: ["sh", "-c", "python monitor.py status && tail -f /dev/null"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+volumes:
+  monitor_latam_data:

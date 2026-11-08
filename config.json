@@ -1,0 +1,13 @@
+{
+  "companhia": "LATAM",
+  "origem": "GRU",
+  "destino": "IMP",
+  "ida": "2026-12-25",
+  "volta": "2027-01-03",
+  "adultos": 1,
+  "bagagem": "somente_de_mao",
+  "tarifa_preferida": "Light",
+  "aceita_conexao": true,
+  "preco_maximo_brl": "1800.00",
+  "moeda": "BRL"
+}
